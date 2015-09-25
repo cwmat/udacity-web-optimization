@@ -529,7 +529,6 @@ function updatePositions() {
   //   items.style.left = items[i].basicLeft + 100 * holder.i + 'px';
   // }
 
-  requestAnimationFrame(updatePositions());
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -542,7 +541,7 @@ function updatePositions() {
 }
 
 // runs updatePositions on scroll
-window.addEventListener('scroll', requestAnimationFrame(updatePositions));
+window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
@@ -558,5 +557,5 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  requestAnimationFrame(updatePositions());
+  updatePositions();
 });
