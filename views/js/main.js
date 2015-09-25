@@ -522,12 +522,12 @@ function updatePositions() {
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     holder.i = phase;
-    // items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
-  for (var i in holder) {
-    items.style.left = items[i].basicLeft + 100 * holder.i + 'px';
-  }
+  // for (var i in holder) {
+  //   items.style.left = items[i].basicLeft + 100 * holder.i + 'px';
+  // }
 
   requestAnimationFrame(updatePositions());
 
