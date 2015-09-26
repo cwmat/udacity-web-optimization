@@ -13,11 +13,11 @@ Try scrolling and test out the pizza size sliders!
 
 ### Optimizations
 #### Index page
--Resized thumbnail images and compressed
--Inlined CSS and removed call to fonts
--Enabled caching
+- Resized thumbnail images and compressed
+- Inlined CSS and removed call to fonts
+- Enabled caching
 
 #### Pizza page
--Removed FSL code from updatePostiion and resizePizzas
--For both of the above mentioned functions I simply moved layout calls out of the for loops and then left batch style changes in the body of the for loops
--Additionally I utilized requestAnimationFrame for updatePositions in order to optimize when JS asked for a new frame
+- Removed FSL code from updatePostiion and resizePizzas
+- For both of the above mentioned functions I simply moved layout calls out of the for loops and then left batch style changes in the body of the for loops
+- Additionally I utilized requestAnimationFrame for updatePositions in order to optimize when JS asked for a new frame
