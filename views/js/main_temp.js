@@ -148,6 +148,7 @@ String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
+
 // Pulls adjective out of array using random number sent from generator
 function getAdj(x){
   switch(x) {
