@@ -16,6 +16,8 @@ Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
 */
 
+'use strict';
+
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
@@ -407,13 +409,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -443,9 +445,10 @@ var resizePizzas = function(size) {
     }
 
     // Removed repeat calls to document.querySelectorAll(".randomPizzaContainer")
-    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+    var randomPizzaLength = randomPizzas.length;
 
-    for (var i = 0; i < randomPizzas.length; i++) {
+    for (var i = 0; i < randomPizzaLength; i++) {
       // Change width to percent vs pixel
       // Removed call to offsetWidth
       randomPizzas[i].style.width = newWidth + "%";
@@ -501,9 +504,11 @@ function updatePositions() {
   // Move call to scrollTop out of the for loop so it doesn't keep running layout
   var items = document.getElementsByClassName('mover');
   var prePhase = (document.body.scrollTop / 1250);
+  var itemsLength = items.length;
+  var phase;
 
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((prePhase) + (i % 5));
+  for (var i = 0; i < itemsLength; i++) {
+    phase = Math.sin((prePhase) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -528,15 +533,17 @@ window.addEventListener('scroll', requestAnimationFrame(updatePositions));
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
+  var rows = (window.screen.height / 100) * cols;
+  var elem;
+  for (var i = 0; i < rows; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   // Utilize requestAnimationFrame
   requestAnimationFrame(updatePositions);
